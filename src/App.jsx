@@ -41,8 +41,8 @@ function App() {
     <>
         <h1>Films App</h1>
         <form onSubmit={handleSubmit}>
-          <input type="text" onChange={e => setSearch(e.target.value)} />
-          <input type="submit" />
+          <input type="text" className='w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 placeholder-gray-500 text-gray-700 transition duration-300' onChange={e => setSearch(e.target.value)} />
+          <input type="submit" className='bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75 transition duration-300' />
         </form>
         {error && <p>{error}</p>}
         {loading && <p>Loading...</p>}
