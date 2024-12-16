@@ -63,8 +63,6 @@ button:focus-visible {
 }
 
 .film-card {
-  flex: 0 1 calc(25% - 16px);
-  box-sizing: border-box;
   background-color: #f9f9f9;
 }
 
