@@ -19,7 +19,7 @@ const Film = () => {
                 `https://api.themoviedb.org/3/movie/${filmID}?api_key=${APP_KEY}&language=fr`
             )
             setFilm(response.data)
-            fetchTrailers(response.data.title)
+            fetchTrailer(response.data.title)
         } catch (err) {
             console.log(err)
         } finally {
@@ -27,7 +27,7 @@ const Film = () => {
         }
     }
 
-    const fetchTrailers = async (title) => {
+    const fetchTrailer = async (title) => {
         try {
             const response = await axios.get(
                 `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&part=snippet&type=video&q=${title}+trailer`
@@ -63,7 +63,7 @@ const Film = () => {
                     <p>{film.overview}</p>
                     <p>Date de sortie : {film.release_date}</p>
 
-                    <h3>Trailers :</h3>
+                    <h3>Trailer :</h3>
                     {trailer ? (
                         <div key={trailer.id.videoId}>
                             <h4>{trailer.snippet.title}</h4>
