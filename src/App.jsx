@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 const APP_KEY = import.meta.env.VITE_APP_KEY
 
@@ -51,7 +52,7 @@ function App() {
             <div key={film.id} className="film-card">
               <p>{film.title}</p>
               <p>{film.vote_average}</p>
-              <img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt={film.title}/>
+              <Link to={`/film/${film.id}`}><img src={`https://image.tmdb.org/t/p/w300${film.poster_path}`} alt={film.title}/></Link>
             </div>
           ))}
         </div>
