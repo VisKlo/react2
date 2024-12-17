@@ -33,7 +33,6 @@ const Film = () => {
                 `https://www.googleapis.com/youtube/v3/search?key=${YOUTUBE_API_KEY}&part=snippet&type=video&q=${title}+trailer`
             )
             setTrailer(response.data.items[0])
-            console.log(response.data.items[0].snippet.title)
         } catch (err) {
             console.log(err)
         }

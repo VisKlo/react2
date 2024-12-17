@@ -1,42 +1,17 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import './App.css'
-import axios from 'axios'
 import {Link} from 'react-router-dom'
-
-const APP_KEY = import.meta.env.VITE_APP_KEY
+import { MovieContext } from './context/MovieContext'
 
 function App() {
 
-  const [films, setFilms] = useState(null)
-  const [error, setError] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [films, error, loading, setQuery] = useContext(MovieContext)
   const [search, setSearch] = useState("")
-  const [query, setQuery] = useState("")
-
-  const fetchFilms = async () => {
-    setLoading(true)
-    try{
-      const url = query ? `https://api.themoviedb.org/3/search/movie?api_key=${APP_KEY}&query=${query}&language=fr` : `https://api.themoviedb.org/3/movie/now_playing?api_key=${APP_KEY}&language=fr`
-      const response = await axios.get(url)
-      setFilms(response.data.results)
-    }
-    catch(err){
-      console.log(err)
-      setError(err.message)
-    }
-    finally{
-      setLoading(false)
-    }
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setQuery(search)
   }
-
-  useEffect(() => {
-    fetchFilms()
-  }, [query])
 
   return (
     <>
