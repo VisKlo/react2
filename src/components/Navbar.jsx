@@ -1,15 +1,34 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useAuth } from '../context/AuthContext'
+
+
 
 const NavBar = () => {
+
+    const { isAuthenticated } = useAuth()
+
     return (
         <>
             <nav>
-                <ul className='flex justify-evenly'>
+                <ul className=" flex place-content-around mb-8">
                     <Link to='/'><li>Home</li></Link>
-                    <Link to='/register'><li>S'inscrire</li></Link>
-                    <Link to='/login'><li>Se connecter</li></Link>
-                    <Link to='/posts'><li>Voir les posts</li></Link>
-                    <Link to='/newpost'><li>Creer un post</li></Link>
+                    <Link to='/posts'><li>Posts</li></Link>
+                    {isAuthenticated ? (
+                        <>
+                        
+                            <Link to='/profile'>Profile</Link>
+                            <button>Logout</button>
+                           
+                        </>
+                    )
+                        : (
+                            <>
+                            <Link to='/register'>Register</Link>
+                            <Link to='/login'>Login</Link>
+                            </>
+                        )
+                    }
+
                 </ul>
             </nav>
         </>
